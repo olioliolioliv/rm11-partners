@@ -13,19 +13,19 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-bg-primary border-b border-border"
+          ? "glass-header shadow-lg shadow-black/20"
           : "bg-transparent"
       }`}
     >
       <div className="mx-auto max-w-7xl flex items-center justify-between px-6 h-16">
-        <a href="#" className="text-gold font-bold text-xl tracking-tight">
+        <a href="#" className="text-gold font-bold text-xl tracking-tight text-glow">
           RM11
         </a>
         <a
           href="#apply"
-          className="inline-flex items-center px-5 py-2 text-sm font-semibold text-white rounded-[23px] transition-opacity duration-300 hover:opacity-90"
+          className="inline-flex items-center px-5 py-2 text-sm font-semibold text-white rounded-[23px] btn-shimmer cta-glow"
           style={{
             background: "linear-gradient(270deg, #fe0127, #460443)",
           }}

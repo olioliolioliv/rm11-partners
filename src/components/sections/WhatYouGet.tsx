@@ -1,4 +1,5 @@
 import { BENEFITS } from "@/lib/constants";
+import AnimateOnScroll from "@/components/ui/AnimateOnScroll";
 
 const ICONS: Record<string, React.ReactNode> = {
   dollar: (
@@ -45,31 +46,36 @@ const ICONS: Record<string, React.ReactNode> = {
 
 export default function WhatYouGet() {
   return (
-    <section id="benefits" className="py-24 md:py-32 bg-bg-secondary">
-      <div className="mx-auto max-w-7xl px-6">
-        <h2 className="text-3xl md:text-5xl font-bold text-center mb-4">
-          What You Get <span className="text-gold">as a Partner</span>
-        </h2>
-        <p className="text-white-muted text-center text-lg mb-16 max-w-xl mx-auto">
-          Beyond the monthly check, here&apos;s everything included
-        </p>
+    <section id="benefits" className="py-24 md:py-32 bg-bg-secondary relative overflow-hidden">
+      <div className="absolute inset-0 noise-overlay pointer-events-none" />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-6">
+        <AnimateOnScroll>
+          <h2 className="text-3xl md:text-5xl font-bold text-center mb-4">
+            What You Get <span className="text-gold text-glow">as a Partner</span>
+          </h2>
+        </AnimateOnScroll>
+        <AnimateOnScroll delay={100}>
+          <p className="text-white-muted text-center text-lg mb-16 max-w-xl mx-auto">
+            Beyond the monthly check, here&apos;s everything included
+          </p>
+        </AnimateOnScroll>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-          {BENEFITS.map((benefit) => (
-            <div
-              key={benefit.title}
-              className="p-6 rounded-[16px] border border-border bg-bg-card hover:border-border-hover hover:bg-bg-card-hover transition-colors duration-300"
-            >
-              <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center text-gold mb-4">
-                {ICONS[benefit.icon]}
+          {BENEFITS.map((benefit, i) => (
+            <AnimateOnScroll key={benefit.title} delay={i * 80}>
+              <div className="group p-6 rounded-[16px] glass-card h-full">
+                <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center text-gold mb-4 transition-transform duration-300 group-hover:scale-110">
+                  {ICONS[benefit.icon]}
+                </div>
+                <h3 className="text-sm font-semibold text-white mb-1.5">
+                  {benefit.title}
+                </h3>
+                <p className="text-xs text-white-dim leading-relaxed">
+                  {benefit.description}
+                </p>
               </div>
-              <h3 className="text-sm font-semibold text-white mb-1.5">
-                {benefit.title}
-              </h3>
-              <p className="text-xs text-white-dim leading-relaxed">
-                {benefit.description}
-              </p>
-            </div>
+            </AnimateOnScroll>
           ))}
         </div>
       </div>

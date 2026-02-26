@@ -106,17 +106,28 @@ export default function ApplicationForm() {
   };
 
   return (
-    <section id="apply" className="py-24 md:py-32">
-      <div className="mx-auto max-w-3xl px-6">
+    <section id="apply" className="py-24 md:py-32 relative overflow-hidden">
+      {/* Background glow */}
+      <div
+        className="absolute top-0 left-1/2 w-[600px] h-[400px] rounded-full pointer-events-none"
+        style={{
+          background: "radial-gradient(circle, rgba(255,218,145,0.05) 0%, transparent 70%)",
+          filter: "blur(80px)",
+          transform: "translateX(-50%)",
+        }}
+      />
+      <div className="absolute inset-0 noise-overlay pointer-events-none" />
+
+      <div className="relative z-10 mx-auto max-w-3xl px-6">
         <h2 className="text-3xl md:text-5xl font-bold text-center mb-4">
-          Apply <span className="text-gold">Now</span>
+          Apply <span className="text-gold text-glow">Now</span>
         </h2>
         <p className="text-white-muted text-center text-lg mb-12">
           Fill out the form below and we&apos;ll get back to you within 48 hours
         </p>
 
         {submitted ? (
-          <div className="text-center py-16 px-8 rounded-[16px] border border-border bg-bg-card">
+          <div className="text-center py-16 px-8 rounded-[16px] glass-card">
             <div className="w-16 h-16 rounded-full bg-success/10 flex items-center justify-center mx-auto mb-6">
               <svg className="w-8 h-8 text-success" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
@@ -135,7 +146,7 @@ export default function ApplicationForm() {
           <form
             onSubmit={onSubmit}
             noValidate
-            className="space-y-6 p-8 rounded-[16px] border border-border bg-bg-card"
+            className="space-y-6 p-8 rounded-[16px] glass-card"
           >
             {submitError && (
               <div className="p-4 rounded-[12px] bg-error/10 border border-error/20 text-error text-sm">
@@ -273,7 +284,7 @@ export default function ApplicationForm() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-4 text-base font-semibold text-white rounded-[23px] transition-opacity duration-300 hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full py-4 text-base font-semibold text-white rounded-[23px] btn-shimmer cta-glow disabled:opacity-50 disabled:cursor-not-allowed"
               style={{ background: "linear-gradient(270deg, #fe0127, #460443)" }}
             >
               {isSubmitting ? "Submitting..." : "Submit Application"}

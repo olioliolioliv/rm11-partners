@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { FAQ_ITEMS } from "@/lib/constants";
+import AnimateOnScroll from "@/components/ui/AnimateOnScroll";
 
 function AccordionItem({
   question,
@@ -24,12 +25,12 @@ function AccordionItem({
   }, [isOpen]);
 
   return (
-    <div className="border-b border-border">
+    <div className="border-b border-border hover:border-gold/20 transition-colors duration-300">
       <button
         onClick={onToggle}
         className="flex items-center justify-between w-full py-5 text-left group"
       >
-        <span className="text-base md:text-lg font-medium text-white pr-8 group-hover:text-gold transition-colors">
+        <span className="text-base md:text-lg font-medium text-white pr-8 group-hover:text-gold transition-colors duration-300">
           {question}
         </span>
         <svg
@@ -65,29 +66,37 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-24 md:py-32">
-      <div className="mx-auto max-w-3xl px-6">
-        <h2 className="text-3xl md:text-5xl font-bold text-center mb-4">
-          Frequently Asked{" "}
-          <span className="text-gold">Questions</span>
-        </h2>
-        <p className="text-white-muted text-center text-lg mb-16">
-          Everything you need to know before applying
-        </p>
+    <section id="faq" className="py-24 md:py-32 relative overflow-hidden">
+      <div className="absolute inset-0 noise-overlay pointer-events-none" />
 
-        <div>
-          {FAQ_ITEMS.map((item, i) => (
-            <AccordionItem
-              key={i}
-              question={item.question}
-              answer={item.answer}
-              isOpen={openIndex === i}
-              onToggle={() =>
-                setOpenIndex(openIndex === i ? null : i)
-              }
-            />
-          ))}
-        </div>
+      <div className="relative z-10 mx-auto max-w-3xl px-6">
+        <AnimateOnScroll>
+          <h2 className="text-3xl md:text-5xl font-bold text-center mb-4">
+            Frequently Asked{" "}
+            <span className="text-gold text-glow">Questions</span>
+          </h2>
+        </AnimateOnScroll>
+        <AnimateOnScroll delay={100}>
+          <p className="text-white-muted text-center text-lg mb-16">
+            Everything you need to know before applying
+          </p>
+        </AnimateOnScroll>
+
+        <AnimateOnScroll delay={200}>
+          <div className="rounded-[16px] glass-card p-6 md:p-8">
+            {FAQ_ITEMS.map((item, i) => (
+              <AccordionItem
+                key={i}
+                question={item.question}
+                answer={item.answer}
+                isOpen={openIndex === i}
+                onToggle={() =>
+                  setOpenIndex(openIndex === i ? null : i)
+                }
+              />
+            ))}
+          </div>
+        </AnimateOnScroll>
       </div>
     </section>
   );

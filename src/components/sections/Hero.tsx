@@ -1,12 +1,42 @@
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Subtle gradient bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-bg-primary to-transparent pointer-events-none" />
+      {/* Background glow orbs */}
+      <div
+        className="absolute top-1/2 left-1/2 w-[600px] h-[600px] rounded-full pointer-events-none animate-glow-pulse"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(254,1,39,0.15) 0%, rgba(70,4,67,0.1) 40%, transparent 70%)",
+          filter: "blur(80px)",
+        }}
+      />
+      <div
+        className="absolute top-[30%] left-[20%] w-[300px] h-[300px] rounded-full pointer-events-none animate-orb-drift opacity-30"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(255,218,145,0.12) 0%, transparent 70%)",
+          filter: "blur(60px)",
+        }}
+      />
+      <div
+        className="absolute bottom-[20%] right-[15%] w-[250px] h-[250px] rounded-full pointer-events-none animate-orb-drift opacity-20"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(254,1,39,0.1) 0%, transparent 70%)",
+          filter: "blur(50px)",
+          animationDelay: "-4s",
+        }}
+      />
+
+      {/* Noise texture */}
+      <div className="absolute inset-0 noise-overlay pointer-events-none" />
+
+      {/* Bottom gradient fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-bg-primary to-transparent pointer-events-none z-20" />
 
       <div className="relative z-10 mx-auto max-w-4xl px-6 text-center pt-20">
         <div className="animate-fade-up" style={{ animationDelay: "0s" }}>
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-8 text-xs font-semibold tracking-widest text-gold uppercase border border-gold/20 rounded-full bg-gold/5">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-8 text-xs font-semibold tracking-widest text-gold uppercase border border-gold/20 rounded-full bg-gold/5 glass-card">
             <span className="w-1.5 h-1.5 rounded-full bg-accent-red animate-pulse" />
             YouTube Partner Program
           </div>
@@ -16,7 +46,7 @@ export default function Hero() {
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] mb-6">
             Get Paid to Talk
             <br />
-            <span className="text-gold">About RM11</span>
+            <span className="text-gold text-glow">About RM11</span>
           </h1>
         </div>
 
@@ -37,7 +67,7 @@ export default function Hero() {
         >
           <a
             href="#apply"
-            className="inline-flex items-center px-8 py-3.5 text-base font-semibold text-white rounded-[23px] transition-opacity duration-300 hover:opacity-90"
+            className="inline-flex items-center px-8 py-3.5 text-base font-semibold text-white rounded-[23px] btn-shimmer cta-glow"
             style={{
               background: "linear-gradient(270deg, #fe0127, #460443)",
             }}
@@ -46,7 +76,7 @@ export default function Hero() {
           </a>
           <a
             href="#tiers"
-            className="inline-flex items-center px-8 py-3.5 text-base font-semibold text-gold rounded-[23px] border border-gold/30 hover:border-gold/60 hover:bg-gold/5 transition-colors duration-300"
+            className="inline-flex items-center px-8 py-3.5 text-base font-semibold text-gold rounded-[23px] border border-gold/30 hover:border-gold/60 hover:bg-gold/5 transition-colors duration-300 border-shimmer"
           >
             See Tiers ↓
           </a>
