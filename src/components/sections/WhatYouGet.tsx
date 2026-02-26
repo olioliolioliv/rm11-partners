@@ -1,7 +1,4 @@
-"use client";
-
 import { BENEFITS } from "@/lib/constants";
-import AnimateOnScroll from "@/components/ui/AnimateOnScroll";
 
 const ICONS: Record<string, React.ReactNode> = {
   dollar: (
@@ -50,30 +47,29 @@ export default function WhatYouGet() {
   return (
     <section id="benefits" className="py-24 md:py-32 bg-bg-secondary">
       <div className="mx-auto max-w-7xl px-6">
-        <AnimateOnScroll>
-          <h2 className="text-3xl md:text-5xl font-bold text-center mb-4">
-            What You Get <span className="text-gold">as a Partner</span>
-          </h2>
-          <p className="text-white-muted text-center text-lg mb-16 max-w-xl mx-auto">
-            Beyond the monthly check, here&apos;s everything included
-          </p>
-        </AnimateOnScroll>
+        <h2 className="text-3xl md:text-5xl font-bold text-center mb-4">
+          What You Get <span className="text-gold">as a Partner</span>
+        </h2>
+        <p className="text-white-muted text-center text-lg mb-16 max-w-xl mx-auto">
+          Beyond the monthly check, here&apos;s everything included
+        </p>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-          {BENEFITS.map((benefit, i) => (
-            <AnimateOnScroll key={benefit.title} delay={i * 0.08}>
-              <div className="p-6 rounded-[16px] border border-border bg-bg-card hover:border-border-hover hover:bg-bg-card-hover transition-all duration-300 group">
-                <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center text-gold mb-4 transition-all duration-300 group-hover:bg-gold/15 group-hover:scale-110">
-                  {ICONS[benefit.icon]}
-                </div>
-                <h3 className="text-sm font-semibold text-white mb-1.5">
-                  {benefit.title}
-                </h3>
-                <p className="text-xs text-white-dim leading-relaxed">
-                  {benefit.description}
-                </p>
+          {BENEFITS.map((benefit) => (
+            <div
+              key={benefit.title}
+              className="p-6 rounded-[16px] border border-border bg-bg-card hover:border-border-hover hover:bg-bg-card-hover transition-colors duration-300"
+            >
+              <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center text-gold mb-4">
+                {ICONS[benefit.icon]}
               </div>
-            </AnimateOnScroll>
+              <h3 className="text-sm font-semibold text-white mb-1.5">
+                {benefit.title}
+              </h3>
+              <p className="text-xs text-white-dim leading-relaxed">
+                {benefit.description}
+              </p>
+            </div>
           ))}
         </div>
       </div>

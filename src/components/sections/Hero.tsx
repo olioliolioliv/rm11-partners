@@ -1,17 +1,8 @@
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background glow */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div
-          className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full opacity-15 blur-[80px]"
-          style={{
-            background:
-              "radial-gradient(circle, #fe0127 0%, #460443 50%, transparent 70%)",
-          }}
-        />
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-bg-primary to-transparent" />
-      </div>
+      {/* Subtle gradient bottom fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-bg-primary to-transparent pointer-events-none" />
 
       <div className="relative z-10 mx-auto max-w-4xl px-6 text-center pt-20">
         <div className="animate-fade-up" style={{ animationDelay: "0s" }}>
@@ -46,7 +37,7 @@ export default function Hero() {
         >
           <a
             href="#apply"
-            className="inline-flex items-center px-8 py-3.5 text-base font-semibold text-white rounded-[23px] transition-all duration-300 hover:shadow-[0_0_30px_rgba(254,1,39,0.4)] hover:scale-[1.02]"
+            className="inline-flex items-center px-8 py-3.5 text-base font-semibold text-white rounded-[23px] transition-opacity duration-300 hover:opacity-90"
             style={{
               background: "linear-gradient(270deg, #fe0127, #460443)",
             }}
@@ -55,7 +46,7 @@ export default function Hero() {
           </a>
           <a
             href="#tiers"
-            className="inline-flex items-center px-8 py-3.5 text-base font-semibold text-gold rounded-[23px] border border-gold/30 hover:border-gold/60 hover:bg-gold/5 transition-all duration-300"
+            className="inline-flex items-center px-8 py-3.5 text-base font-semibold text-gold rounded-[23px] border border-gold/30 hover:border-gold/60 hover:bg-gold/5 transition-colors duration-300"
           >
             See Tiers ↓
           </a>

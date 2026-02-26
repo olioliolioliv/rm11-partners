@@ -2,7 +2,6 @@
 
 import { useState, useRef, useEffect } from "react";
 import { FAQ_ITEMS } from "@/lib/constants";
-import AnimateOnScroll from "@/components/ui/AnimateOnScroll";
 
 function AccordionItem({
   question,
@@ -51,7 +50,7 @@ function AccordionItem({
       </button>
       <div
         ref={contentRef}
-        className="overflow-hidden transition-all duration-300 ease-out"
+        className="overflow-hidden transition-[height] duration-300 ease-out"
         style={{ height }}
       >
         <p className="pb-5 text-white-muted leading-relaxed pr-12">
@@ -68,31 +67,27 @@ export default function FAQ() {
   return (
     <section id="faq" className="py-24 md:py-32">
       <div className="mx-auto max-w-3xl px-6">
-        <AnimateOnScroll>
-          <h2 className="text-3xl md:text-5xl font-bold text-center mb-4">
-            Frequently Asked{" "}
-            <span className="text-gold">Questions</span>
-          </h2>
-          <p className="text-white-muted text-center text-lg mb-16">
-            Everything you need to know before applying
-          </p>
-        </AnimateOnScroll>
+        <h2 className="text-3xl md:text-5xl font-bold text-center mb-4">
+          Frequently Asked{" "}
+          <span className="text-gold">Questions</span>
+        </h2>
+        <p className="text-white-muted text-center text-lg mb-16">
+          Everything you need to know before applying
+        </p>
 
-        <AnimateOnScroll delay={0.15}>
-          <div>
-            {FAQ_ITEMS.map((item, i) => (
-              <AccordionItem
-                key={i}
-                question={item.question}
-                answer={item.answer}
-                isOpen={openIndex === i}
-                onToggle={() =>
-                  setOpenIndex(openIndex === i ? null : i)
-                }
-              />
-            ))}
-          </div>
-        </AnimateOnScroll>
+        <div>
+          {FAQ_ITEMS.map((item, i) => (
+            <AccordionItem
+              key={i}
+              question={item.question}
+              answer={item.answer}
+              isOpen={openIndex === i}
+              onToggle={() =>
+                setOpenIndex(openIndex === i ? null : i)
+              }
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
