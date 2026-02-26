@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useRef, useEffect } from "react";
 import { FAQ_ITEMS } from "@/lib/constants";
 import AnimateOnScroll from "@/components/ui/AnimateOnScroll";
 
@@ -16,6 +15,15 @@ function AccordionItem({
   isOpen: boolean;
   onToggle: () => void;
 }) {
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    if (contentRef.current) {
+      setHeight(isOpen ? contentRef.current.scrollHeight : 0);
+    }
+  }, [isOpen]);
+
   return (
     <div className="border-b border-border">
       <button
@@ -41,21 +49,15 @@ function AccordionItem({
           />
         </svg>
       </button>
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-            className="overflow-hidden"
-          >
-            <p className="pb-5 text-white-muted leading-relaxed pr-12">
-              {answer}
-            </p>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <div
+        ref={contentRef}
+        className="overflow-hidden transition-all duration-300 ease-out"
+        style={{ height }}
+      >
+        <p className="pb-5 text-white-muted leading-relaxed pr-12">
+          {answer}
+        </p>
+      </div>
     </div>
   );
 }

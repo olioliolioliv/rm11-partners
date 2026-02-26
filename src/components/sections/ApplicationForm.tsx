@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { motion, AnimatePresence } from "framer-motion";
 import { applicationSchema, type ApplicationFormData } from "@/lib/schemas";
 import {
   SUBSCRIBER_OPTIONS,
@@ -89,14 +88,10 @@ export default function ApplicationForm() {
         </AnimateOnScroll>
 
         <AnimateOnScroll delay={0.15}>
-          <AnimatePresence mode="wait">
+          <>
             {submitted ? (
-              <motion.div
-                key="success"
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="text-center py-16 px-8 rounded-[16px] border border-border bg-bg-card"
-              >
+              <div className="text-center py-16 px-8 rounded-[16px] border border-border bg-bg-card animate-fade-up">
+
                 <div className="w-16 h-16 rounded-full bg-success/10 flex items-center justify-center mx-auto mb-6">
                   <svg
                     className="w-8 h-8 text-success"
@@ -118,10 +113,9 @@ export default function ApplicationForm() {
                   Our team will review your application and get back to you
                   within 48 hours.
                 </p>
-              </motion.div>
+              </div>
             ) : (
-              <motion.form
-                key="form"
+              <form
                 onSubmit={handleSubmit(onSubmit)}
                 className="space-y-6 p-8 rounded-[16px] border border-border bg-bg-card"
               >
@@ -395,9 +389,9 @@ export default function ApplicationForm() {
                   partnerships team. We review all applications within 48
                   hours.
                 </p>
-              </motion.form>
+              </form>
             )}
-          </AnimatePresence>
+          </>
         </AnimateOnScroll>
       </div>
     </section>
