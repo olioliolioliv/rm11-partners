@@ -6,9 +6,7 @@ export const TIERS = [
     subscribers: "5K–25K",
     avgViews: "2,000+",
     videosPerMonth: 2,
-    referralBonus: "$5/signup",
-    bonusContent: null,
-    segmentLength: "3-minute RM11 segment",
+    referralBonus: "$50 deposit per signup",
     popular: false,
   },
   {
@@ -18,9 +16,7 @@ export const TIERS = [
     subscribers: "25K–100K",
     avgViews: "8,000+",
     videosPerMonth: 2,
-    referralBonus: "$10/signup",
-    bonusContent: "1 Short or Community post",
-    segmentLength: "5-minute segment or full dedicated video",
+    referralBonus: "$50 deposit per signup",
     popular: true,
   },
   {
@@ -30,9 +26,7 @@ export const TIERS = [
     subscribers: "100K+",
     avgViews: "25,000+",
     videosPerMonth: 2,
-    referralBonus: "$20/signup",
-    bonusContent: "2 Shorts or Community posts",
-    segmentLength: "Full dedicated video",
+    referralBonus: "$50 deposit per signup",
     popular: false,
   },
 ] as const;
@@ -97,8 +91,8 @@ export const BENEFITS = [
   },
   {
     icon: "link",
-    title: "Uncapped Referral Commissions",
-    description: "$5–$20 per signup with no ceiling",
+    title: "Referral Incentive Program",
+    description: "Every user who signs up via your link gets a $50 deposit",
   },
   {
     icon: "palette",
