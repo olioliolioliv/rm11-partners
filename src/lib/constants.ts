@@ -6,7 +6,7 @@ export const TIERS = [
     subscribers: "5K–25K",
     avgViews: "2,000+",
     videosPerMonth: 2,
-    referralBonus: "$50 deposit per signup",
+    referralBonus: "5% of all creator referral earnings + $50 signup bonus for them",
     popular: false,
   },
   {
@@ -16,7 +16,7 @@ export const TIERS = [
     subscribers: "25K–100K",
     avgViews: "8,000+",
     videosPerMonth: 2,
-    referralBonus: "$50 deposit per signup",
+    referralBonus: "5% of all creator referral earnings + $50 signup bonus for them",
     popular: true,
   },
   {
@@ -26,7 +26,7 @@ export const TIERS = [
     subscribers: "100K+",
     avgViews: "25,000+",
     videosPerMonth: 2,
-    referralBonus: "$50 deposit per signup",
+    referralBonus: "5% of all creator referral earnings + $50 signup bonus for them",
     popular: false,
   },
 ] as const;
@@ -77,9 +77,10 @@ export const PROOF_POINTS = [
       "Smart features that help creators maximize their revenue.",
   },
   {
-    stat: "1st",
-    title: "To Pay YouTubers",
-    description: "No other fan platform runs paid YouTube sponsorships. We're the first.",
+    stat: "0%",
+    title: "Traffic Leak",
+    description:
+      "Your fans never see another creator. Every visitor from your link stays on your page — your traffic, your revenue.",
   },
 ] as const;
 
@@ -91,8 +92,8 @@ export const BENEFITS = [
   },
   {
     icon: "link",
-    title: "Referral Incentive Program",
-    description: "Every user who signs up via your link gets a $50 deposit",
+    title: "Creator Referral Revenue",
+    description: "Earn 5% of every creator you refer — plus they get a $50 signup bonus",
   },
   {
     icon: "palette",

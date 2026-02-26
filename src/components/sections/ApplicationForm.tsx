@@ -50,17 +50,21 @@ export default function ApplicationForm() {
     }
   };
 
+  // ── YOUR TEAM: replace this URL with your WordPress endpoint ──
+  const FORM_ENDPOINT =
+    process.env.NEXT_PUBLIC_FORM_ENDPOINT || "https://rm11.com/wp-json/rm11/v1/partner-apply";
+
   const onSubmit = async (data: ApplicationFormData) => {
     setSubmitError("");
     try {
-      const res = await fetch("/api/apply", {
+      const res = await fetch(FORM_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
 
       if (!res.ok) {
-        const err = await res.json();
+        const err = await res.json().catch(() => ({}));
         throw new Error(err.message || "Something went wrong");
       }
 
